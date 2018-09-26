@@ -1,0 +1,79 @@
+body {
+    background-color: wheat;
+    /* background-image: url("https://www.w3schools.com/css/paper.gif"); */
+    /* background-repeat: repeat; */
+    /* background-clip: padding-box; */
+}
+
+h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: green;
+    text-align: center;
+}
+
+p, #panel {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+    background-color: yellow;
+}
+
+div {
+    box-sizing: border-box;
+    float: left;
+    background-color: lightblue;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid gray;
+}
+
+#span {
+    cursor: move;
+    text-align: center;
+    color: brown;
+}
+
+#span, span.inline, .file-selector {
+    border-radius: 5px;
+    color: gray;
+    border: 2px outset gray;
+    background: cornsilk;
+    font-family: monospace;
+    padding-left: 3px;
+    padding-right: 3px;
+    cursor: pointer;
+}
+
+#container {
+    width: 100%;
+}
+
+.main {
+    /* position: relative; */
+    /* float: left; */
+    width: 60%;
+}
+
+.panel {
+    /* position: relative; */
+    /* float: right; */
+    width: 38%;
+    min-height: 10%;
+    border-width: 0.5px 0.5px 10px 10px;
+    border-style: solid;
+    border-color: gray;
+}
+
+#test-input {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+input {
+    background-color: lightblue;
+    border-style: none;
+}
