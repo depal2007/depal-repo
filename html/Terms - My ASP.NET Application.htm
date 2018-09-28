@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://deev.avp.ru/glossapi/Term/Edit# -->
+<html style="" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms - My ASP.NET Application</title>
+    <link rel="icon" type="image/png" href="http://deev.avp.ru/glossapi/content/images/tau.png">
+
+    <link href="./Terms - My ASP.NET Application_files/bootstrap.css" rel="stylesheet">
+<link href="./Terms - My ASP.NET Application_files/bootstrap.min.css" rel="stylesheet">
+<link href="./Terms - My ASP.NET Application_files/bootstrap-table.css" rel="stylesheet">
+<link href="./Terms - My ASP.NET Application_files/bootstrap-responsive.css" rel="stylesheet">
+<link href="./Terms - My ASP.NET Application_files/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="./Terms - My ASP.NET Application_files/bootstrap-editable.css" rel="stylesheet">
+<link href="./Terms - My ASP.NET Application_files/bootstrap-table.min.css" rel="stylesheet">
+<link href="./Terms - My ASP.NET Application_files/dropdown.css" rel="stylesheet">
+<link href="./Terms - My ASP.NET Application_files/Site.css" rel="stylesheet">
+
+    <link href="./Terms - My ASP.NET Application_files/jquery-ui.css" rel="stylesheet">
+
+    <script src="./Terms - My ASP.NET Application_files/modernizr-2.8.3.js"></script>
+
+    <script src="./Terms - My ASP.NET Application_files/jquery-1.7.2.js"></script>
+<script src="./Terms - My ASP.NET Application_files/jquery-3.3.1.js"></script>
+
+    <script src="./Terms - My ASP.NET Application_files/bootstrap.min.js"></script>
+<script src="./Terms - My ASP.NET Application_files/bootstrap-table.js"></script>
+
+    <script src="./Terms - My ASP.NET Application_files/jquery-ui.min.js"></script>
+    <script src="serialize-table.js"></script>
+
+    
+</head>
+<body>
+    <li style="color: red;" class="btn">&amp;&amp;&amp;&amp;&amp;&amp;</li><div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+            </div>
+            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                <ul class="nav navbar-nav">
+                    <li><a href="http://deev.avp.ru/glossapi/Concept/Add">Old Concepts View</a></li>
+                    <li><a href="http://deev.avp.ru/glossapi/Concept/New">New Concepts View</a></li>
+                    <li><a href="http://deev.avp.ru/glossapi/Term/Edit">Basic Terms View</a></li>
+                    <li><a href="http://deev.avp.ru/glossapi/Term/Edit2">Basic Terms View</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        
+
+
+
+<h2>Terms</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <form class="form" role="search">
+                <div class="input-group add-on">
+                    <input class="form-control" placeholder="Search…" name="search-term" id="search-term" type="text">
+                    <div class="input-group-btn">
+                        <button id="search-btn" class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2">
+            <div id="adv-search-btn" class="btn btn-info">Advanced search…</div>
+
+        </div>
+        <div class="col-md-6">
+            <div id="add-btn-concept" class="btn btn-info" style="margin-left:25%">Add new concept</div>
+            
+            <div id="add-btn-term" class="btn btn-info" style="margin-left:1%">Add new term</div>
+            
+            
+            <ul id="languages" class="dropdown-menu" style="margin-left:75%">
+                    <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="1" tabindex="-1"><input type="radio" name="LangRadio" value="1">&nbsp;en-US</a></li>
+                    <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="2" tabindex="-1"><input type="radio" name="LangRadio" value="2">&nbsp;ru-RU</a></li>
+                    <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="3" tabindex="-1"><input type="radio" name="LangRadio" value="3">&nbsp;de-DE</a></li>
+                    <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="4" tabindex="-1"><input type="radio" name="LangRadio" value="4">&nbsp;fr-FR</a></li>
+            </ul>
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="http://deev.avp.ru/glossapi/Term/Edit#" style="float:right">
+                en-US 
+                <div id="term-language"></div>
+            </a>
+        </div>
+    </div>
+    </div>
+<hr>
+
+
+<!-- Новая таблица-->
+
+<div class="container">
+
+
+    
+    <div class="bootstrap-table"><div class="fixed-table-toolbar"><div class="columns columns-right btn-group pull-right"><button class="btn btn-default" type="button" name="refresh" aria-label="refresh" title="Refresh"><i class="glyphicon glyphicon-refresh icon-refresh"></i></button></div><div class="pull-right search"><input class="form-control" type="text" placeholder="Search"></div></div><div class="fixed-table-container" style="padding-bottom: 0px;"><div class="fixed-table-header" style="display: none;"><table></table></div><div class="fixed-table-body"><div class="fixed-table-loading" style="top: 42px;">Loading, please wait...</div><table id="bs-table" data-toggle="table" data-search="true" data-show-export="true" data-show-refresh="true" data-export-types="[&#39;excel&#39;]" data-click-to-select="true" data-single-select="true" class="table-responsive table table-hover">
+        <thead><tr><th class="bs-checkbox " style="width: 36px; " data-field="state"><div class="th-inner "></div><div class="fht-cell"></div></th><th style="" data-field="1"><div class="th-inner sortable both">ID</div><div class="fht-cell"></div></th><th style="" data-field="2"><div class="th-inner sortable both">Status</div><div class="fht-cell"></div></th><th style="" data-field="3"><div class="th-inner sortable both">Text</div><div class="fht-cell"></div></th><th style="" data-field="4"><div class="th-inner sortable both">Note</div><div class="fht-cell"></div></th><th style="" data-field="5"><div class="th-inner sortable both">Language</div><div class="fht-cell"></div></th><th style="" data-field="6"><div class="th-inner sortable both">Platform</div><div class="fht-cell"></div></th><th style="" data-field="7"><div class="th-inner sortable both">Project</div><div class="fht-cell"></div></th><th style="" data-field="8"><div class="th-inner sortable both">Version</div><div class="fht-cell"></div></th></tr></thead>
+        <tbody><tr class="clickable-row" data-index="0"> <td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox" checked="checked"></td> <td style="">
+                        1    
+                    </td> <td style="">
+                        1
+                    </td> <td style="">
+                        application
+   
+                    </td> <td style="">
+                           
+                    </td> <td style="">
+                           
+                    </td> <td style="">
+                        software
+                    </td> <td style="">
+                        
+                    </td> <td style="">
+                        
+                    </td> </tr><tr class="clickable-row" data-index="1"> <td class="bs-checkbox "><input data-index="1" name="btSelectItem" type="checkbox" checked="checked"></td> <td style="">
+                        2    
+                    </td> <td style="">
+                        1
+                    </td> <td style="">
+                        application   
+                    </td> <td style="">
+                           
+                    </td> <td style="">
+                           
+                    </td> <td style="">
+                        piece if software
+                    </td> <td style="">
+                        
+                    </td> <td style="">
+                        
+                    </td> </tr><tr class="clickable-row" data-index="2"> <td class="bs-checkbox "><input data-index="2" name="btSelectItem" type="checkbox" checked="checked"></td> <td style="">
+                        4    
+                    </td> <td style="">
+                        1
+                    </td> <td style="">
+                        application   
+                    </td> <td style="">
+                           
+                    </td> <td style="">
+                           
+                    </td> <td style="">
+                        Piece if software
+                    </td> <td style="">
+                        
+                    </td> <td style="">
+                        
+                    </td> </tr><tr class="clickable-row" data-index="3"> <td class="bs-checkbox "><input data-index="3" name="btSelectItem" type="checkbox" checked="checked"></td> <td style="">
+                        5    
+                    </td> <td style="">
+                        1
+                    </td> <td style="">
+                        antivirus   
+                    </td> <td style="">
+                           
+                    </td> <td style="">
+                           
+                    </td> <td style="">
+                        a program
+                    </td> <td style="">
+                        
+                    </td> <td style="">
+                        
+                    </td> </tr><tr class="clickable-row" data-index="4"> <td class="bs-checkbox "><input data-index="4" name="btSelectItem" type="checkbox" checked="checked"></td> <td style="">
+                        6    
+                    </td> <td style="">
+                        1
+                    </td> <td style="">
+                        app   
+                    </td> <td style="">
+                           
+                    </td> <td style="">
+                           
+                    </td> <td style="">
+                        software
+                    </td> <td style="">
+                        
+                    </td> <td style="">
+                        
+                    </td> </tr><tr class="clickable-row selected" data-index="5"> <td class="bs-checkbox "><input data-index="5" name="btSelectItem" type="checkbox" checked="checked"></td> <td style="">
+                        7    
+                    </td> <td style="">
+                        1
+                    </td> <td style="">
+                        antivirus   
+                    </td> <td style="">
+                           
+                    </td> <td style="">
+                           
+                    </td> <td style="">
+                        an antivirus programm
+                    </td> <td style="">
+                        
+                    </td> <td style="">
+                        
+                    </td> </tr><tr class="clickable-row" data-index="6"> <td class="bs-checkbox "><input data-index="6" name="btSelectItem" type="checkbox" checked="checked"></td> <td style="">
+                        8    
+                    </td> <td style="">
+                        1
+                    </td> <td style="">
+                        fdssdf   
+                    </td> <td style="">
+                           
+                    </td> <td style="">
+                           
+                    </td> <td style="">
+                        jkjlk11
+                    </td> <td style="">
+                        
+                    </td> <td style="">
+                        
+                    </td> </tr><tr class="clickable-row selected" data-index="6"></tr><tr class="clickable-row selected" data-index="6"></tr><tr class="clickable-row selected" data-index="6"></tr></tbody>
+    </table></div><div class="fixed-table-footer" style="display: none;"><table><tbody><tr></tr></tbody></table></div></div><div class="fixed-table-pagination" style="display: none;"></div></div><div class="clearfix"></div>
+</div>
+
+
+<div class="modal fade" id="dialog" tabindex="-1" role="dialog" aria-labelledby="dialog-label">
+    <div class="modal-dialog ui-draggable" id="dialog-container" role="document" style="width:1200px">
+        <div class="modal-content">
+            <div class="modal-header ui-draggable-handle">
+                <button type="button" class="close" data-dismiss="modal">x</button>
+                <h4 class="modal-title" id="dialog-label">Adding new term</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label for="concept-definition">Concept definition</label>
+                                <textarea disabled="" type="text" name="concept-definition" id="concept-definition" class="form-control" rows="1" placeholder="Concept definition"></textarea>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="term-language" style="padding-top:10px;">Language</label>
+                                <a class="btn dropdown-toggle" data-toggle="dropdown" href="http://deev.avp.ru/glossapi/Term/Edit#">
+                                    Select...
+                                </a>
+                                <ul id="languages" class="dropdown-menu">
+                                        <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="1" tabindex="-1"><input type="radio" name="LangRadio" value="1">&nbsp;en-US</a></li>
+                                        <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="2" tabindex="-1"><input type="radio" name="LangRadio" value="2">&nbsp;ru-RU</a></li>
+                                        <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="3" tabindex="-1"><input type="radio" name="LangRadio" value="3">&nbsp;de-DE</a></li>
+                                        <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="4" tabindex="-1"><input type="radio" name="LangRadio" value="4">&nbsp;fr-FR</a></li>
+                                </ul>
+                                <div id="term-language" style="display:block">
+                                    <p rows="2" class="textarea_dd"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label for="term-text" style="padding-top:10px">Text</label>
+                                <input type="text" name="term-text" id="term-text" class="form-control" placeholder="Bla-bla-bla..." autocomplete="off">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="term-platform" style="padding-top:10px;">Platform</label>
+                                <a class="btn dropdown-toggle" data-toggle="dropdown" href="http://deev.avp.ru/glossapi/Term/Edit#">
+                                    Select...
+                                </a>
+                                <ul id="platforms" class="dropdown-menu">
+                                        <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="1" tabindex="-1"><input type="checkbox">&nbsp;MAC</a></li>
+                                        <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="2" tabindex="-1"><input type="checkbox">&nbsp;WIN
+</a></li>
+                                        <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="3" tabindex="-1"><input type="checkbox">&nbsp;Mobile</a></li>
+                                </ul>
+                                <div id="term-platform" style="display:block">
+                                    <p rows="2" class="textarea_dd"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label for="term-note" style="padding-top:10px;">Term note</label>
+                                <textarea type="text" name="term-note" id="term-note" class="form-control" rows="1" placeholder="Term note" autocomplete="off"></textarea>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="term-project" style="padding-top:10px;">Project</label>
+                                <a class="btn dropdown-toggle" data-toggle="dropdown" href="http://deev.avp.ru/glossapi/Term/Edit#">
+                                    Select...
+                                </a>
+                                <ul id="projects" class="dropdown-menu">
+                                        <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="1" tabindex="-1"><input type="checkbox">&nbsp;KES</a></li>
+                                        <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="2" tabindex="-1"><input type="checkbox">&nbsp;KIS</a></li>
+                                        <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="3" tabindex="-1"><input type="checkbox">&nbsp;KPM</a></li>
+                                        <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="4" tabindex="-1"><input type="checkbox">&nbsp;UG</a></li>
+                                </ul>
+                                <div id="term-project" style="display:block">
+                                    <p rows="2" class="textarea_dd"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label for="term-media" style="padding-top:10px;">Media</label>
+                                <input type="file" name="term-media" id="term-media" class="form-control" placeholder="Add media file" autocomplete="off">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="term-version" style="padding-top:10px;">Version</label>
+                                <a class="btn dropdown-toggle" data-toggle="dropdown" href="http://deev.avp.ru/glossapi/Term/Edit#">
+                                    Select...
+                                </a>
+                                <ul id="version" class="dropdown-menu">
+                                        <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="1" tabindex="-1"><input type="checkbox">&nbsp;10.0</a></li>
+                                        <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="2" tabindex="-1"><input type="checkbox">&nbsp;11.0.0</a></li>
+                                        <li><a href="http://deev.avp.ru/glossapi/Term/Edit#" class="small" data-value="3" tabindex="-1"><input type="checkbox">&nbsp;11.0.1</a></li>
+                                </ul>
+                                <div id="term-version" style="display:block">
+                                    <p rows="2" class="textarea_dd"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button id="btn-submit-term" type="button" class="btn btn-success">Submit term</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="subdialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="subdialog-label">
+    <div class="modal-dialog ui-draggable" id="dialog-container" role="document">
+        <div class="modal-content">
+            <div class="modal-header ui-draggable-handle">
+                <button type="button" class="close" data-dismiss="modal">x</button>
+                <h4 class="modal-title" id="subdialog-label">Do you want to submit this term?</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <div id="term-description-to-submit"></div>
+                <div class="modal-footer">
+                    <button id="btn-submit-cancel" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button id="btn-submit-send" type="button" class="btn btn-success">Create term</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="term-found" tabindex="-1" role="dialog" aria-labelledby="dialog-label">
+    <div class="modal-dialog ui-draggable" id="dialog-container" role="document">
+        <div class="modal-content">
+            <div class="modal-header ui-draggable-handle">
+                <button type="button" class="close" data-dismiss="modal">x</button>
+                <h4 class="modal-title" id="dialog-label">terms detalis:</h4>
+            </div>
+            <div id="term-details" class="modal-body" style="padding:40px 50px;">
+                <div id="term-tab-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    Definition
+                                </th>
+                                <th scope="col">
+                                    Text
+                                </th>
+                                <th scope="col">
+                                    Context
+                                </th>
+                                <th scope="col">
+                                    Relations
+                                </th>
+                                <th scope="col">
+                                    Note
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-submit" type="button" class="btn btn-success">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="dialog-concept" tabindex="-1" role="dialog" aria-labelledby="dialog-label">
+    <div class="modal-dialog ui-draggable" id="dialog-container" role="document">
+        <div class="modal-content">
+            <div class="modal-header ui-draggable-handle">
+                <button type="button" class="close" data-dismiss="modal">x</button>
+                <h4 class="modal-title" id="dialog-label">Adding new concept</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                    <div class="form-group">
+
+                        <label for="concept-definition">Concept definition</label>
+                        <textarea type="text" name="concept-definition" id="concept-definition" class="form-control" rows="3" placeholder="Concept definition" autocomplete="off"></textarea>
+                        <label for="concept-text" style="padding-top:10px;">Concept text</label>
+                        <input type="text" name="concept-text" id="concept-text" class="form-control" placeholder="Concept text" autocomplete="off">
+                        <label for="concept-relations" style="padding-top:10px;">Relations for concept</label>
+                        <input type="text" name="concept-relations" id="concept-relations" class="form-control" placeholder="Relations for concept" autocomplete="off">
+                        <label for="concept-context" style="padding-top:10px;">Context</label>
+                        <input type="text" name="concept-context" id="concept-context" class="form-control" placeholder="Some sentence for example" autocomplete="off">
+                        <label for="concept-media" style="padding-top:10px;">Media</label>
+                        <input type="file" name="concept-media" id="concept-media" class="form-control" placeholder="Add media file">
+
+                        <hr>
+                        <label for="concept-note">Concept note</label>
+                        <textarea type="text" name="concept-note" id="concept-note" class="form-control" rows="5" placeholder="Concept note" autocomplete="off"></textarea>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button id="btn-submit-concept" type="button" class="btn btn-success">Submit concept</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="subdialog-concept" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="subdialog-label">
+    <div class="modal-dialog ui-draggable" id="dialog-container" role="document">
+        <div class="modal-content">
+            <div class="modal-header ui-draggable-handle">
+                <button type="button" class="close" data-dismiss="modal">x</button>
+                <h4 class="modal-title" id="subdialog-label">Do you want to submit this concept?</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <div id="concept-description-to-submit"></div>
+                <div class="modal-footer">
+                    <button id="btn-submit-cancel" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button id="btn-submit-send" type="button" class="btn btn-success">Create concept</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="concept-found" tabindex="-1" role="dialog" aria-labelledby="dialog-label">
+    <div class="modal-dialog ui-draggable" id="dialog-container" role="document">
+        <div class="modal-content">
+            <div class="modal-header ui-draggable-handle">
+                <button type="button" class="close" data-dismiss="modal">x</button>
+                <h4 class="modal-title" id="dialog-label">Concept detalis:</h4>
+            </div>
+            <div id="concept-details" class="modal-body" style="padding:40px 50px;">
+                <div id="concept-tab-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    Definition
+                                </th>
+                                <th scope="col">
+                                    Text
+                                </th>
+                                <th scope="col">
+                                    Context
+                                </th>
+                                <th scope="col">
+                                    Relations
+                                </th>
+                                <th scope="col">
+                                    Note
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-submit" type="button" class="btn btn-success">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+    var table = document.getElementsByTagName("tbody")[0];
+    serializeSelected(table);
+    
+    
+
+    //при загрузки страницы снять все выделения строк
+    window.onload = function() {
+        alert();
+        $('#bs-table').bootstrapTable('uncheckall');
+        }
+
+    // получение массива выбранных строк
+    $('#bs-table').bootstrapTable('getSelections')
+
+
+    //включение/выключение кнопки "Добавить новый термин" при выборе строки в таблице
+    $('#bs-table').bootstrapTable({
+        onCheck: function (row, $element) {
+            $('#add-btn-term').removeAttr("disabled");
+        },
+        onUncheck: function (row, $element) {
+            $('#add-btn-term').attr("disabled", "disabled");
+        },
+    });
+
+
+    // событие для сочетания клавиш Ctr + Shift + Space (открытие диалога)
+    $(document).keydown(function (e) {
+        if (e.ctrlKey && e.shiftKey && (e.which === 32)) {
+            $("#dialog").modal();
+        };
+    });
+
+    // открытие диалога по клику по кнопке
+    $("#add-btn-term").click(function () {
+        if (!$('#add-btn-term').attr("disabled")) {
+            $("#dialog").modal();
+        }
+    });
+
+    // открытие субдиалога подтверждения при нажатии кнопки
+    $("#btn-submit-term").click(function () {
+        $("#term-description-to-submit").append(
+            "<div>Text: " + $("#term-text").val() + "</div>" +
+            "<div>Definition: " + $("#concept-definition").val() + "</div>" +
+            "<div>Platform(s): " + $("#term-platform").text() + "</div>" +
+            "<div>Project(s): " + $("#term-project").text() + "</div>" +
+            "<div>Version: " + $("#term-version").text() + "</div>" +
+            "<div>Note: " + $("#term-note").val() + "</div>"
+        );
+        $("#subdialog").modal();
+    });
+
+    // очистка субдиалога подтверждения при закрытии
+    $("#subdialog").on('hide.bs.modal', function () {
+        $("#term-description-to-submit").empty();
+    })
+
+    // настройка возможности перетаскивания для класса диалогов
+    $(".modal-dialog").draggable({
+        handle: ".modal-header"
+    });
+
+    // запуск сабмита термина при нажатии кнопки сабмита с субдиалоге
+    $("#btn-submit-send").click(function () {
+        addTerm();
+        $("#subdialog").modal("hide");
+        $("#dialog").modal("hide");
+    });
+
+
+    $("#add-btn-concept").click(function () {
+        $("#dialog-concept").modal();
+    });
+
+    $("#btn-submit-concept").click(function () {
+        $("#concept-description-to-submit").append(
+            "<div>Definition: " + $("#concept-definition").val() + "</div>" +
+            "<div>Text: " + $("#concept-text").val() + "</div>" +
+            "<div>Context: " + $("#concept-context").val() + "</div>" +
+            "<div>Note: " + $("#concept-note").val() + "</div>"
+        );
+        $("#subdialog-concept").modal();
+    });
+
+    $("#subdialog-concept").on('hide.bs.modal', function () {
+        $("#concept-description-to-submit").empty();
+    })
+
+    $(".modal-dialog").draggable({
+        handle: ".modal-header"
+    });
+
+
+    $("#btn-submit-send").click(function () {
+        addConcept();
+        $("#subdialog-concept").modal("hide");
+        $("#dialog-concept").modal("hide");
+    });
+
+        // функция сабмита концепта. надо переписать с учетом стуктуры даных.
+    function addConcept() {
+        //alert("closed!");
+        alert(
+            $("#concept-text").val() + "\n" +
+            $("#concept-definition").val() + "\n" +
+            $("#concept-parent").val()
+        );
+
+        $.ajax({
+            type: "POST",
+            url: "http://deev.avp.ru/glossapi/concepts",
+
+            data: JSON.stringify(
+                {
+                    "ConceptText": $("#concept-text").val(),
+                    "Definition": $("#concept-definition").val(),
+                    "Parent": $("#concept-parent").val()
+                }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) { alert(data); },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });
+    }
+
+    // функция сабмита термина. надо переписать с учетом стуктуры даных для термина
+    function addTerm() {
+        //alert("closed!");
+        alert(
+            $("#term-text").val() + "\n" +
+            $("#term-note").val() + "\n" +
+            $("#term-language").val()
+        );
+
+        $.ajax({
+            type: "POST",
+            url: "http://deev.avp.ru/glossapi/terms",
+
+            data: JSON.stringify(
+                {
+                    "Language": $("#term-language").val(),
+                    "TermText": $("#term-text").val(),
+                    "TermNote": $("#term-definition").val(),
+                    "Project": $("#term-project").val(),
+                    "Platform": $("#term-parent").val(),
+                    "Version": $("#term-version").val()
+                }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) { alert(data); },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });
+    }
+
+
+    // пример функции для вставки выбранных значений в панельки
+
+
+
+    $("input").change(function () {
+        var checkedItems = [];
+        $(this).parents("ul")
+            .children()
+            .find(":checked")
+            .each(function (index, value) {
+                checkedItems.push(value.parentElement.textContent); // поскольку само значение у нас в родительском теге <a> ...
+            });
+        checkedItems = checkedItems.join(", ");
+
+        $(this)
+            .parents()
+            .eq(2)
+            .next()
+            .first()
+            .text(checkedItems);
+    });
+
+    //$("#languages").click(function () {
+    //    if ($(this).hasClass('open')) {
+    //        alert('it works');
+    //    }
+    //});
+
+    // открытие диалога поиска терминов
+    $("#search-btn").click(function (e) {
+        e.preventDefault();
+        $("#term-found").modal();
+    });
+
+</script>
+
+
+
+        <hr>
+        <footer>
+            <p>© 2018 - Kaspersky Lab</p>
+        </footer>
+    </div>
+
+
+
+
+<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;" src="./Terms - My ASP.NET Application_files/saved_resource.html"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div><div class="__disk_root__" style="position: static;"></div></body></html>

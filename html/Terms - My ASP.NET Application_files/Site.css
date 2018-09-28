@@ -1,0 +1,61 @@
+﻿
+
+body {
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.navbar-inverse {
+    background-color: seagreen;
+    background-image: none;
+}
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: white;
+    }
+
+        .navbar-inverse .navbar-nav > li > a:hover {
+            color: lightgrey;
+        }
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 400px;
+    min-height: 40px;
+}
+
+    input[type=checkbox], input[type=radio] {
+        min-height: 20%;
+        max-height: 10%;
+        /*max-width: 20%;*/
+        min-width: 10%;
+    }
+
+.dropdown-menu {
+   /* margin-top: 0px;*/
+    margin-left: 70px;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.textarea_dd {
+    max-height: 70px;
+}
