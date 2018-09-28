@@ -4,7 +4,7 @@ function serializeSelected(table){
     var headerCells = header.getElementsByTagName("th");
 
     var fields = [];
-    var checkedDataSet = {};
+    var checkedConcept = {};
 
 
     for (var i = 0; i < headerCells.length; i++) {
@@ -18,7 +18,7 @@ function serializeSelected(table){
     var checkedRow = table.querySelector("tr input:checked").parentElement.parentElement;
     for (var i = 0; i < checkedRow.childElementCount; i++) {
         var propName = fields[i];
-        checkedDataSet[propName] = checkedRow.children[i].textContent.trim();
+        checkedConcept[propName] = checkedRow.children[i].textContent.trim();
     }
 
     if(document.querySelector("div#label"))
@@ -29,9 +29,9 @@ function serializeSelected(table){
     label = document.body.insertBefore(label, document.body.firstElementChild);
     label.setAttribute('style', 'white-space: pre;');
     label.textContent = "";
-    label.textContent += checkedDataSet.ID + "\r\n";
-    label.textContent += checkedDataSet.Status + "\r\n";
-    label.textContent += checkedDataSet.Text + "\r\n";
-    label.textContent += checkedDataSet.Platform + "\r\n";
-    return checkedDataSet;
+    label.textContent += checkedConcept.ID + "\r\n";
+    label.textContent += checkedConcept.Status + "\r\n";
+    label.textContent += checkedConcept.Text + "\r\n";
+    label.textContent += checkedConcept.Platform + "\r\n";
+    return checkedConcept;
 }
