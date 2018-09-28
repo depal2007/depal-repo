@@ -21,7 +21,11 @@ function serializeSelected(table){
         checkedDataSet[propName] = checkedRow.children[i].textContent.trim();
     }
 
+    if(document.querySelector("div#label"))
+        document.body.removeChild(document.querySelector("div#label"));
+
     var label = document.createElement("div");
+    label.id = "label";
     label = document.body.insertBefore(label, document.body.firstElementChild);
     label.setAttribute('style', 'white-space: pre;');
     label.textContent = "";
